@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: 'IBM Plex Sans', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* titles */
+h1, h2, h3, h4, h5, h6 {
+  @apply leading-none tracking-tight;
+}
+
+/* Sidebar */
+@layer components {
+  .sidebar-link-icon {
+    @apply text-2xl transition-colors delay-75 text-ctp-overlay0 hover:text-ctp-mauve;
+  }
+  
+  .sidebar-link-icon-active {
+    @apply text-ctp-mauve;
+  }
+}
