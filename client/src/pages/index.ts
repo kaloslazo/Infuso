@@ -4,3 +4,6 @@ export * from './discover/Discover.page';
 export * from './account/Account.page';
 export * from './preferences/Preferences.page';
 export * from './not-found/NotFound.page';
+export * from './starred/Starred.page'; 
+export * from './read-later/ReadLater.page';
+export * from './library/Library.page';

@@ -23,3 +23,14 @@ h1, h2, h3, h4, h5, h6 {
     @apply text-ctp-mauve;
   }
 }
+
+/* Auxiliar sidebar */
+@layer components {
+  .auxiliar-sidebar-link {
+    @apply inline-flex items-center w-full gap-2 px-4 py-1 text-sm text-ctp-text border-l-2 border-transparent hover:bg-ctp-base transition-all delay-75 ease-in-out;
+  }
+
+  .auxiliar-sidebar-link-active {
+    @apply text-ctp-mauve border-ctp-mauve;
+  }
+}
