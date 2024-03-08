@@ -24,51 +24,41 @@ export const SidebarComponent = () => {
   return (
     <nav className={`inline-flex text-ctp-overlay0 ${isAuxiliarSidebarOpen ? 'w-56' : 'w-16'}`}>
       {/* Links sidebar */}
-      <ul className="z-10 z-30 w-16 h-full px-4 py-4 border-r-2 bg-ctp-mantle border-ctp-base">
+      <ul className="fixed z-30 w-16 h-full px-4 py-4 border-r-2 bg-ctp-mantle border-ctp-base">
         <li className="flex flex-col items-center justify-between h-full gap-8">
-          {
-            sidebarLinks.map((eachCategory: SidebarLinksInterface) => (
-              <div className="flex flex-col gap-4" key={eachCategory.links[0].name}>
-                {
-                  eachCategory.links.map((eachLink: LinksInterface) => {
-                    if (eachLink.collapse) return ( <SidebarToggle className={'sidebar-link-icon'} icon={eachLink.icon} key={eachLink.name} onClick={toggleAuxiliarSidebar}/> );
-                    return (
-                      <NavLink to={eachLink.url} className={({ isActive }) => isActive ? 'sidebar-link-icon sidebar-link-icon-active'  : 'sidebar-link-icon'} key={eachLink.name}>
-                        {eachLink.icon}
-                      </NavLink>
-                    )
-                  })
-                }
-              </div>
-            ))
-          }
+          {sidebarLinks.map((eachCategory: SidebarLinksInterface) => (
+            <div className="flex flex-col gap-4" key={eachCategory.links[0].name}>
+              {eachCategory.links.map((eachLink: LinksInterface) => {
+                if (eachLink.collapse) return ( <SidebarToggle className={'sidebar-link-icon'} icon={eachLink.icon} key={eachLink.name} onClick={toggleAuxiliarSidebar}/> );
+                return (
+                  <NavLink to={eachLink.url} className={({ isActive }) => isActive ? 'sidebar-link-icon sidebar-link-icon-active'  : 'sidebar-link-icon'} key={eachLink.name}>
+                    {eachLink.icon}
+                  </NavLink>
+                )
+              })}
+            </div>
+          ))}
         </li>
       </ul>
       {/* Auxiliar sidebar */}
-      <ul className={`${isAuxiliarSidebarOpen ? 'translate-x-0' : '-translate-x-full'} z-20 flex-shrink-0 bg-ctp-mantle transition-all ease-in-out duration-500 h-full overflow-hidden w-44`}>
+      <ul className={`${isAuxiliarSidebarOpen ? 'translate-x-0' : '-translate-x-full'} ml-16 z-20 flex-shrink-0 bg-ctp-mantle transition-all ease-in-out duration-500 h-full overflow-hidden w-44`}>
         <li className="transition-opacity duration-500 ease-in-out " style={{opacity: isAuxiliarSidebarOpen ? 1 : 0}}>
-          {/* Brand icon */}
-          <div className="inline-flex items-center w-full gap-2 px-4 py-3 text-2xl font-semibold border-b-2 border-ctp-base text-ctp-mauve">
-            <TbCoffee />
-            <h2 className="text-xl font-bold">{siteConfig.name}</h2>
-          </div>
           {/* Activity */}
           <div>
             <h3 className="px-4 py-2 mt-2 mb-2 text-sm font-medium">Activity</h3>
             <div className="flex flex-col gap-2">
-              {
-                auxiliarSidebarLinks.map((eachAuxiliarLink: LinksInterface) => (
-                  <NavLink to={eachAuxiliarLink.url} className={({ isActive }) => isActive ? 'auxiliar-sidebar-link auxiliar-sidebar-link-active'  : 'auxiliar-sidebar-link'} key={eachAuxiliarLink.name}>
-                    <span className="text-base">{eachAuxiliarLink.icon}</span>
-                    <span>{eachAuxiliarLink.name}</span>
-                  </NavLink>
-                )
-              )}
+              {auxiliarSidebarLinks.map((eachAuxiliarLink: LinksInterface) => (
+                <NavLink end to={eachAuxiliarLink.url} className={({ isActive }) => isActive ? 'auxiliar-sidebar-link auxiliar-sidebar-link-active'  : 'auxiliar-sidebar-link'} key={eachAuxiliarLink.name}>
+                  <span className="text-base">{eachAuxiliarLink.icon}</span>
+                  <span>{eachAuxiliarLink.name}</span>
+                </NavLink>
+              ))}
             </div> 
           </div>
+          
           {/* Show feeds */}
           <div>
-            <h3 className="px-4 py-2 mt-4 mb-2 text-sm font-medium">Feeds</h3>
+            <h3 className="px-4 py-2 mt-4 mb-2 text-sm font-medium">Following</h3>
             <div className="text-sm text-ctp-text">
               <ul className="flex flex-col gap-2">
                 <li>

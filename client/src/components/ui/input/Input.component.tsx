@@ -5,14 +5,18 @@ interface InputComponentPropsInterface {
   inputType?: string;
   inputFor?: string;
   completeInput?: boolean;
+  inputValue?: string;
+  onChange?: any;
 }
 
-export const InputComponent = ({ inputIcon = <></>, inputPlaceholder = '', inputLabel = '', inputType = 'text', inputFor = '', completeInput = false }: InputComponentPropsInterface) => {
+export const InputComponent = ({ inputIcon = <></>, inputPlaceholder = '', inputLabel = '', inputType = 'text', inputFor = '', completeInput = false, inputValue, onChange }: InputComponentPropsInterface) => {
   return (
     <div className="relative flex flex-col w-full h-full gap-2 items-left">
       <label htmlFor={inputFor} className={`${completeInput ? '' : 'sr-only'} font-medium`}>{inputLabel}</label>
 
       <input
+        value={inputValue}
+        onChange={onChange}
         type={inputType}
         id={inputFor}
         placeholder={inputPlaceholder}
